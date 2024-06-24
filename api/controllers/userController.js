@@ -19,7 +19,7 @@ router.route('/')
         } = req.body;
 
         // check if the user already exists
-        db.get("SELECT * FROM users WHERE email = ?", [email], (err, row) => {
+        db.query("SELECT * FROM users WHERE email = ?", [email], (err, row) => {
             if (err) {
                 return res.status(500).send(err.message);
             }
@@ -29,7 +29,7 @@ router.route('/')
         })
 
         // insert the user
-        db.run("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", [name, email, password], (err) => {
+        db.query("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", [name, email, password], (err) => {
             if (err) {
                 return res.status(500).send(err.message);
             }
@@ -45,7 +45,7 @@ router.route('/')
             password,
         } = req.body;
 
-        db.run("UPDATE users SET name = ?, email = ?, pass = ? WHERE id = ?", [name, email, password, id], (err) => {
+        db.query("UPDATE users SET name = ?, email = ?, pass = ? WHERE id = ?", [name, email, password, id], (err) => {
             if (err) {
                 return res.status(500).send(err.message);
             }
@@ -55,7 +55,7 @@ router.route('/')
 
     .delete((req,res)=>{
         const { id } = req.body;
-        db.run("DELETE FROM users WHERE id = ?", [id], (err) => {
+        db.query("DELETE FROM users WHERE id = ?", [id], (err) => {
             if (err) {
                 return res.status(500).send(err.message);
             }
