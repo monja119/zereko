@@ -60,7 +60,16 @@ export default function Project() {
     return (
         <>
         {
-            projects.length === 0  ? <Nothing /> :
+            projects.length !== 0  ? (
+                <div className={"w-full h-full flex flex-col justify-center items-center"}>
+                    <Nothing />
+                    <Link to={"/projects/add"}
+                        className="btn btn-primary custom-button ml-5 w-[100px] mt-5">
+                        <FaPlus className="mr-2"/>
+                        Créer
+                    </Link>
+                </div>
+                ) :
                 (
                     <div className="content-wrapper">
                         <section className="content">
