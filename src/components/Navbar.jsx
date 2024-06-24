@@ -79,7 +79,7 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to={"/sign"}
+                            <Link to={"/logout"}
                                   className={"btn btn-danger bg-primary text-white my-2"}
                             >
                                 Se déconnecter

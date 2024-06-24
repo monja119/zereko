@@ -2,6 +2,7 @@ import React from 'react'
 import Nothing from "../../components/Nothing.jsx";
 import { Link } from 'react-router-dom';
 
+
 const Home = () => {
   return (
     <>

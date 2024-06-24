@@ -2,7 +2,7 @@ import axios from 'axios';
 const back_en_point = import.meta.env.VITE_API_URL;
 
 export const authentification = (data) => {
-    return axios.post(`${back_en_point}/auth/login/`, data);
+    return axios.post(`${back_en_point}/login/`, data);
 }
 
 

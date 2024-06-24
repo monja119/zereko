@@ -1,7 +1,7 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 
 // Router
-import {Outlet} from 'react-router-dom'
+import {Outlet, useNavigate} from 'react-router-dom'
 
 // components
 import Sidebar from "../components/Sidebar/Sidebar"
@@ -9,12 +9,23 @@ import Navbar from "../components/Navbar"
 
 // Routes
 import NavLink from '../routes/NavLink'
+import {useSelector} from "react-redux";
 
 // Sidebar expand context
 export const SidebarExpandContext = createContext()
 
 const MainLayout = () => {
+    const navigate = useNavigate();
+    const user = useSelector(state => state.user.user)
     const [expanded, setExpanded] = useState(false)
+
+    useEffect(() => {
+        if(user == null) {
+            navigate('/login')
+        }
+        console.log(user)
+    }, []);
+
     return (
         <>
             

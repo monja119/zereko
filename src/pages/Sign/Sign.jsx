@@ -1,32 +1,33 @@
 
 import { useEffect, useState } from "react"
 import "./Sign.scss"
+import { useDispatch } from 'react-redux';
+import { setUser } from "../../reducers/userReducer.js"
 
 // components
 import Loader from "../../components/Loader"
-
+import { createUser } from "../../services/userService.js";
+import {authentification} from "../../services/authService.js";
 
 // Lottie
 import Lottie from 'react-lottie'
 import animationData from '../../lotties/Banner.json'
 
 const Sign = () => {
+  const dispatch = useDispatch()
+
+  const [error, setError] = useState(null)
 
   // Loader
   const [load, setLoad] = useState(false)
 
   // input data 
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
-    number: '',
-    localisation : '',
-    account_type: 0
+    confirm_password: ''
   })
-
-  // account type
-    const [accountType, setAccountType] = useState('')
 
   // Lottie option
   const defaultOptions = {
@@ -58,15 +59,74 @@ const Sign = () => {
 
   // logining
   const login = (e) => {
-    
-    setLoad(true)
-    window.location.href = "/"
+    e.preventDefault()
+    startLoading()
+    if(formData.email === "" || formData.password === ""){
+      setError("Veuillez remplir tous les champs")
+      stopLoading()
+      return
+    }
+    const data = {
+      email: formData.email,
+      password: formData.password
+    }
+    authentification(data)
+    .then((res) => {
+      let user = res.data.user
+      localStorage.setItem("user", JSON.stringify(user))
+      dispatch(setUser({user: user, isLoggedIn: true}))
+      stopLoading()
+      window.location.href = "/"
+
+    })
+    .catch(async (err) => {
+        setError("Erreur lors de la connexion - " + err.message)
+      stopLoading()
+    })
   }
 
   // signing
   const signing = () => {
     setLoad(true)
-    window.location.href = "/"
+    // is all the fields filled
+    if(formData.name === "" || formData.email === "" || formData.password === "" || formData.confirm_password === ""){
+        setError("Veuillez remplir tous les champs")
+        setLoad(false)
+        return
+    }
+    // is the password and confirm password the same
+    if(formData.password !== formData.confirm_password){
+      setError("Les mots de passe ne correspondent pas")
+      setLoad(false)
+      return
+    }
+
+    // password length must be greater than 4
+    if(formData.password.length < 4){
+        setError("Le mot de passe doit contenir au moins 4 caractères")
+        setLoad(false)
+        return
+    }
+
+    // create user
+    const data = {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password
+    }
+    createUser(data)
+    .then((res) => {
+        console.log(res)
+        stopLoading()
+        window.location.href = "/"
+    })
+    .catch(async (err) => {
+
+        let data = await err
+        console.log(data)
+        setError("Erreur lors de la création de l'utilisateur - " + data.message)
+        stopLoading()
+    })
   }
 
   // animation
@@ -157,50 +217,54 @@ const Sign = () => {
                 </div>
 
                 <div className="actual-form">
-                  <div className="input-wrap">
+                  <span className="error text-red-600 my-3">{error}</span>
+                  <div className="input-wrap mt-3">
                     <input
-                      type="text"
-                      minLength="4"
-                      className="input-field focus:text-gray-200"
-                      autoComplete="off"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
+                        type="text"
+                        minLength="4"
+                        className="input-field focus:text-gray-200"
+                        autoComplete="off"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
                     />
                     <label>Email</label>
                   </div>
 
                   <div className="input-wrap">
                     <input
-                      type="password"
-                      minLength="4"
-                      className="input-field focus:text-gray-200"
-                      autoComplete="off"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      required
+                        type="password"
+                        minLength="4"
+                        className="input-field focus:text-gray-200"
+                        autoComplete="off"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
                     />
                     <label>Mot de passe</label>
                   </div>
 
-                  
+
                   <button
-                    type="button" 
-                    onClick={(e) => login(e)}
-                    className="sign-btn btn btn-primary text-white tracking-widest" 
+                      type="button"
+                      onClick={(e) => login(e)}
+                      className="sign-btn btn btn-primary text-white tracking-widest"
                   >
-                      Se connecter
+                    Se connecter
 
                   </button>
 
                   <p className="text">
-                    <a href="#" className="underline underline-offset-2 text-primary hover:text-secondary">Mot de passe oublié?</a>
+                    <a href="#" className="underline underline-offset-2 text-primary hover:text-secondary">Mot de passe
+                      oublié?</a>
                   </p>
                 </div>
               </form>
 
+
+              {/* sign in*/}
               <form action="index.html" autoComplete="off" className="sign-up-form">
                 <div className="logo flex flex-row justify-center text-center">
                   <img src="/assets/images/logo_no_bg.png" alt="easyclass" />
@@ -214,43 +278,21 @@ const Sign = () => {
 
 
                 <div className="actual-form">
-
-                  <div className="input-wrap">
-                    <select  className="input-field focus:text-gray-200" name="account_type" value={formData.account_type} onChange={handleChange} required>
-                        <option value="0">Bénévole</option>
-                        <option value="1">Organisations</option>
-                    </select>
-                  </div>
-
+                  <span className="error text-red-600">{error}</span>
                   <div className="input-wrap">
                     <input
                       type="text"
                       minLength="4"
                       className="input-field focus:text-gray-200"
                       autoComplete="off"
-                      name="username"
-                      value={formData.username}
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
                       required
                     />
                     <label>Nom Complet</label>
                   </div>
-                  
-                  <div className="actual-form">
-                    <div className="input-wrap">
-                      <input
-                        name="localisation"
-                        id="localisation"
-                        type="text"
-                        className="input-field"
-                        autoComplete="off"
-                        value={formData.localisation}
-                        onChange={handleChange}
-                        required
-                      />
-                      <label>Localisation</label>
-                    </div>
-                  </div>
+
 
                   <div className="input-wrap">
                     <input
@@ -279,8 +321,19 @@ const Sign = () => {
                     <label>Mot de passe</label>
                   </div>
 
-                  
-                  
+                    <div className="input-wrap">
+                        <input
+                        type="password"
+                        minLength="4"
+                        className="input-field"
+                        autoComplete="off"
+                        name="confirm_password"
+                        value={formData.confirm_password}
+                        onChange={handleChange}
+                        required
+                        />
+                        <label>Confirmer le mot de passe</label>
+                    </div>
 
                   
 

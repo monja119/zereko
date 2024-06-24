@@ -28,7 +28,9 @@ function App() {
       <Routes>
         <Route path="/sign" element={<Sign/>}/>
         <Route path="/login" element={<Sign/>}/>
+          <Route path="/logout" element={<LogOut/>}/>
         <Route path="/" element={<MainLayout/>}>
+          <Route path="/" element={<Home/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/forum" element={<Forum/>}/>
             <Route path="/profile" element={<Profile/>}>
@@ -38,7 +40,6 @@ function App() {
                 <Route  path="agenda" element={<Agenda/>}/>
             </Route>
         </Route>
-        <Route path="/logout" element={<LogOut/>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
     </>

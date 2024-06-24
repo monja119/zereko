@@ -2,25 +2,20 @@ import React, { useEffect, useState} from 'react'
 
 // Router
 import { NavLink, Outlet} from 'react-router-dom'
-import { Routes, Route } from 'react-router-dom'
 
 // icons
 import { BsTelephone } from "react-icons/bs"
 import { CiMail } from "react-icons/ci"
-import { GiMale, GiFemale } from "react-icons/gi"
+import { GiMale } from "react-icons/gi"
 import { FaBriefcase } from "react-icons/fa"
 import { AiFillMessage } from "react-icons/ai"
 import { MdLocationOn } from "react-icons/md"
 
-// import { useData } from '../../contexts/DataContext'
+import {useSelector} from "react-redux";
 
 const Profile = () => {
-    // const { user } = useData()
-    const [userData, setUserData] = useState({})
+    const user = useSelector(state => state.user.user.user)
 
-    // useEffect(() => {
-    //     setUserData(user)
-    // }, [user])
   return (
     <div className="w-full h-full">
         <div className="w-full h-full rounded-md shadow-xl p-12 flex flex-row">
@@ -33,25 +28,25 @@ const Profile = () => {
                 </div>
 
                 <div className="flex flex-col items-center w-full mb-10">
-                    <h1 className="font-bold text-2xl mb-1 text-center"> MONJA </h1>
-                    <h3 className="text-lg text-white">
-                        Web Developer
-                    </h3>
+                    <h1 className="font-bold text-2xl mb-1 text-center"> {user?.name} </h1>
+                    {/*<h3 className="text-lg text-white">*/}
+                    {/*    Web Developer*/}
+                    {/*</h3>*/}
                 </div>
 
                 <div className="flex flex-col justify-center gap-1 text-white">
 
-                    <div className="flex flex-items-center gap-3 mb-2">
-                        <BsTelephone className="text-xl text-primary "/>
-                        <span>
-                             +261 34 12 345 67
-                        </span>
-                    </div>
+                    {/*<div className="flex flex-items-center gap-3 mb-2">*/}
+                    {/*    <BsTelephone className="text-xl text-primary "/>*/}
+                    {/*    <span>*/}
+                    {/*         +261 34 12 345 67*/}
+                    {/*    </span>*/}
+                    {/*</div>*/}
 
                     <div className="flex items-center gap-3 mb-2">
                         <CiMail className="text-xl text-primary"/>
                         <span>
-                         monja.sesame@gmail.com
+                            {user?.email}
                         </span>
                     </div>
                     <div  className="flex items-center gap-3 mb-2">
@@ -66,18 +61,6 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center mb-5 gap-1 text-white">
-                    <div className="flex items-center gap-3 mb-2">
-                        <AiFillMessage className="text-xl text-primary"/>
-                        <span>
-                          "Ma citation préférée"
-                        </span>
-                    </div>
-                    <div className="flex items-center gap-3 mb-2">
-                        <FaBriefcase className="text-xl text-primary"/>
-                        <h4 className="font-bold">45 bénévoles</h4>
-                    </div>
-                </div>
 
                 <div className="flex flex-col justify-center  gap-1">
                     <div className="flex items-center gap-3 w-full">
