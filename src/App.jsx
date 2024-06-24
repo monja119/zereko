@@ -23,7 +23,7 @@ import Project from "./pages/project/project.jsx";
 import ProjectAdd from "./pages/project/projectAdd.jsx";
 import Invitation from './pages/project/Invitation.jsx';
 import ProjectView from './pages/project/ProjectView.jsx';
-
+import ProjectEdit from './pages/project/projectEdit.jsx';
 // notifications
 import Notifications from "./pages/notifications/Notifications.jsx";
 
@@ -43,6 +43,7 @@ function App() {
           <Route path="/projects" element={<Project/>}/>        
           <Route path="/projects/add" element={<ProjectAdd/>}/>
           <Route path="/projects/view" element={<ProjectView/>}/>
+          <Route path="/projects/edit/:id" element={<ProjectEdit/>}/>
           <Route path="/projects/inviter" element={<Invitation/>}/>
           <Route path="/notifications" element={<Notifications/>}/>
           <Route path="/forum" element={<Forum/>}/>

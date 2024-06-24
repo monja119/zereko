@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createProject } from "../../services/projectServices.js";
+import { updateProject } from "../../services/projectServices.js";
 import { createMember } from "../../services/memberServices.js";
-import {setUser} from "../../reducers/userReducer.js";
 
 
 const defaultState = {
+    id : null,
     title: "",
     description: "",
     date_debut: null,
     date_fin: null
 }
-export default function GeneralCard({ creating }) {
+export default function GeneralCardEdit({ creating, project }) {
     const [state, setState] = useState(defaultState);
     const navigate = useNavigate();
     const user = useSelector(state => state.user.user.user);
@@ -25,24 +25,29 @@ export default function GeneralCard({ creating }) {
         });
     }
 
-    const creatingProject = async () => {
+    useEffect(() => {
+        if(project) {
+            setState({
+                id: project?.id,
+                title: project?.title,
+                description: project?.description,
+                date_debut: project?.date_debut,
+                date_fin: project?.date_fin
+            })
+        }
+    }, [project]);
+
+    const updatingProject = async () => {
         // title is required
         if(state.title === "") {
             setError("Le titre est requis.");
             return;
         }
 
-        createProject(state)
+        updateProject(state)
             .then((res) => {
                 const project = res.data;
-                console.log(project);
-                createMember({user_id: user.id, project_id: project.id})
-                    .then((res) => {
-                        window.location.href = "/projects"
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
+               window.location.href = "/projects"
             })
             .catch(async (err) => {
                 const error  = await err
@@ -52,8 +57,7 @@ export default function GeneralCard({ creating }) {
     }
 
     useEffect(() => {
-        console.log(user);
-        if(creating !== 0) creatingProject();
+        if(creating !== 0) updatingProject();
     }, [creating]);
 
     return (

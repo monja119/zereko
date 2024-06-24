@@ -5,6 +5,10 @@ export const listProject = async () => {
     return axios.get(`${back_en_point}/projects`)
 }
 
+export const getProject = async (id) => {
+    return axios.get(`${back_en_point}/projects/${id}`)
+}
+
 export const listProjectByUserId = async (id) => {
     return axios.get(`${back_en_point}/projects/user/${id}`)
 }
