@@ -1,4 +1,4 @@
-import GeneralCard from './generalCard';
+import GeneralCard from './GeneralCard';
 import { Link } from 'react-router-dom';
 
 export default function ProjectAdd() {

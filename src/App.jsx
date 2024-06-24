@@ -19,8 +19,10 @@ import History from "./pages/profile/History";
 import Feedback  from "./pages/profile/Feedback";
 import NotFound from "./pages/errors/NotFound";
 import Agenda from "./pages/profile/Agenda";
-import Project from './pages/project/project.jsx';
-import ProjectAdd from './pages/project/projectAdd.jsx';
+import Project from './pages/project/Project.jsx';
+import ProjectAdd from './pages/project/ProjectAdd.jsx';
+import Invitation from './pages/project/Invitation.jsx';
+import ProjectView from './pages/project/ProjectView.jsx';
 
 // notifications
 import Notifications from "./pages/notifications/Notifications.jsx";
@@ -40,6 +42,8 @@ function App() {
           <Route path="/home" element={<Project/>}/>
           <Route path="/projects" element={<Project/>}/>        
           <Route path="/projects/add" element={<ProjectAdd/>}/>
+          <Route path="/projects/view" element={<ProjectView/>}/>
+          <Route path="/projects/inviter" element={<Invitation/>}/>
           <Route path="/notifications" element={<Notifications/>}/>
           <Route path="/forum" element={<Forum/>}/>
           <Route path="/profile" element={<Profile/>}>

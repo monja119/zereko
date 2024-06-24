@@ -17,7 +17,7 @@ const Profile = () => {
     const user = useSelector(state => state.user.user.user)
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-fullw-full h-full">
         <div className="w-full h-full rounded-md shadow-xl p-12 flex flex-row">
             
             {/* TOP SECTION */}

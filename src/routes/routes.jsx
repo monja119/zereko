@@ -1,14 +1,14 @@
 // Pages
 import Home from "../page/Home"
 import Forum from "../page/Forum"
-import Project from "../pages/project/project"
+import Project from "../pages/project/Project"
 import Event from "../page/Event"
 import ProfileSetting from "../page/ProfileSetting"
 
 import LogOut from "../page/settings/logOut"
 import Profile from "../page/profile/Profile"
 
-import ProjectAdd from "../pages/project/projectAdd"
+import ProjectAdd from "../pages/project/ProjectAdd"
 
 
 export const withLayoutRoutes = [

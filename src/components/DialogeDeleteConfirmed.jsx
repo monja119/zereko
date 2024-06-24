@@ -12,10 +12,10 @@ const DialogConfirmedDelete = ({ show, handleClose, handleDelete, description })
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Cancel
+          Retour
         </Button>
         <Button variant="danger" onClick={handleDelete}>
-          Delete
+          Supprimer
         </Button>
       </Modal.Footer>
     </Modal>
