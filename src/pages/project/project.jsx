@@ -134,11 +134,12 @@ export default function Project() {
                                                         <span className="badge badge-success">Success</span>
                                                     </td>
                                                     <td className="project-actions text-right flex flex-row justify-end">
-                                                        <Link className="btn btn-primary btn-sm m-2" to="/viewProject">
+                                                        <Link
+                                                            className="btn btn-primary btn-sm m-2" to="/projects/view">
                                                             <FaEye className="mr-2"/>
                                                             Voir
                                                         </Link>
-                                                        <Link className="btn btn-info btn-sm m-2" to="/editProject">
+                                                        <Link className="btn btn-info btn-sm m-2" to="/projects/edit">
                                                             <FaEdit className="mr-2"/>
                                                              Modifier
                                                         </Link>
@@ -148,10 +149,10 @@ export default function Project() {
                                                             <FaTrash className="mr-2"/>
                                                             Supprimer
                                                         </button>
-                                                        <button className="btn btn-secondary btn-sm m-2" to="#">
+                                                        <Link className="btn btn-secondary btn-sm m-2" to="/projects/inviter">
                                                             <i className="fas fa-trash"></i>
                                                             Inviter des amies
-                                                        </button>
+                                                        </Link>
                                                     </td>
                                                 </tr>
                                                 </tbody>

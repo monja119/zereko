@@ -19,8 +19,8 @@ import History from "./pages/profile/History";
 import Feedback  from "./pages/profile/Feedback";
 import NotFound from "./pages/errors/NotFound";
 import Agenda from "./pages/profile/Agenda";
-import Project from './pages/project/Project.jsx';
-import ProjectAdd from './pages/project/ProjectAdd.jsx';
+import Project from "./pages/project/project.jsx";
+import ProjectAdd from "./pages/project/projectAdd.jsx";
 import Invitation from './pages/project/Invitation.jsx';
 import ProjectView from './pages/project/ProjectView.jsx';
 
