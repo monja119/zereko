@@ -1,0 +1,60 @@
+/*=============== Tailwind css ===============*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+/* ===== =====>>  Universal Selector  <<===== =====  */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* ===== =====>>  Body Font Size  <<===== =====  */
+html {
+  font-size: 11px;
+  scroll-behavior: smooth;
+}
+
+
+
+/* ===== =====>>  Body Css  <<===== =====  */
+body {
+  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+}
+
+/* ===== =====>>  ScrollBar  <<===== =====  */
+.scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgb(64, 64, 64);
+  cursor: pointer;
+}
+
+.hover-scale:hover {
+  transform: scale(1.1);
+}
