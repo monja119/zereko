@@ -5,7 +5,8 @@ import { IoHomeOutline, IoNotificationsOutline, IoSettingsOutline } from "react-
 import { MdCalendarToday, MdOutlineForum } from "react-icons/md"
 
 // profile outliner
-import { FaUserCircle } from "react-icons/fa"
+import { FaUserCircle, FaProjectDiagram  } from "react-icons/fa"
+
 // components
 import SidebarItem from "../components/Sidebar/SidebarItem"
 
@@ -17,6 +18,7 @@ const NavLink = () => {
         </div>
         <SidebarItem icon={<IoHomeOutline className="text-2xl"/>} text="Acceuil" link="/home"/>
         <SidebarItem icon={<FaUserCircle className="text-2xl"/>} text="Profile" link="/profile"/>
+        {/* <SidebarItem icon={<FaProjectDiagram  className="text-2xl"/>} text="Projet" link="/projects"/> */}
         <SidebarItem icon={<IoNotificationsOutline className="text-2xl"/>} text="Notifications" link="/notifications" alert/>
         {/*<SidebarItem icon={<MdCalendarToday className="text-2xl"/>} text="Mon calendrier" link="/calendar"/>*/}
         {/*<SidebarItem icon={<MdOutlineForum className="text-2xl"/>} text="Nouveautés" link="/forum"/>*/}

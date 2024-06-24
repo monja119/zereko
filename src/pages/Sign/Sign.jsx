@@ -221,7 +221,7 @@ const Sign = () => {
 
                 <div className="heading">
                   <h2 className="text-gray-200 mb-3">
-                    "Transformez votre temps libre en impact positif - Rejoignez notre communauté de bénévoles et chanez des vies dès aujourd'hui"
+                    "Outils de gestion de projet "
                   </h2>
                   <h6 className="text-gray-500">Pas encore de compte? </h6>
                   <a href="" className="toggleLink text-primary hover:text-secondary">S'inscrire</a>

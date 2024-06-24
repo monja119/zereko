@@ -38,7 +38,7 @@ const MainLayout = () => {
 
                 <div className={`w-full h-full grow-0 shrink fixed top-0 left-0 flex flex-col items-center justify-center ${expanded ? "md:pl-80" : "md:pl-24"} md:p-6 transition-all`}>
                     <Navbar/>
-                    <div className="w-full h-full bg-base-300 p-12 rounded-lg shadow-lg overflow-hidden relative"><Outlet/></div>
+                    <div className="w-full h-full bg-base-300 p-12 rounded-lg shadow-lg overflow-y-scroll relative"><Outlet/></div>
                 </div>
             </SidebarExpandContext.Provider>
         </>

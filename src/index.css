@@ -15,6 +15,7 @@
   list-style: none;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
+  
 }
 
 
@@ -37,7 +38,6 @@ body {
   margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-    /*background-color: rgba(255, 255, 255, 0.8);*/
 }
 
 /* ===== =====>>  ScrollBar  <<===== =====  */
