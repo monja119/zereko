@@ -21,7 +21,7 @@ db.connect((err) => {
     console.log('Connecté à la base de données MySQL');
 });
 
-// Création de la table users si elle n'existe pas déjà
+// users
 db.query(`
     CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,6 +37,7 @@ db.query(`
     }
     console.log('Table users créée ou déjà existante');
 });
+
 
 // Exportation de la connexion de la base de données
 module.exports = db;
