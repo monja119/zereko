@@ -1,3 +1,4 @@
+/api/config/db.js
 # Logs
 logs
 *.log
