@@ -6,18 +6,23 @@ import {Routes, Route} from 'react-router-dom'
 // Global Styling
 import './App.css'
 
-// pages
+// auth
 import Sign from "./pages/Sign/Sign"
-import Home from "./pages/Home/Home.jsx"
+import LogOut from "./pages/settings/logOut";
+
+// home
+import Forum from "./pages/Forum"
+import Home from "./pages/home/Home.jsx"
 
 // profile
-import Forum from "./pages/Forum"
 import Profile from "./pages/profile/Profile"
 import History from "./pages/profile/History";
 import Feedback  from "./pages/profile/Feedback";
 import NotFound from "./pages/errors/NotFound";
-import LogOut from "./pages/settings/logOut";
 import Agenda from "./pages/profile/Agenda";
+
+// notifications
+import Notifications from "./pages/notifications/Notifications.jsx";
 
 // Layout
 import MainLayout from "./layouts/MainLayout"
@@ -32,6 +37,7 @@ function App() {
         <Route path="/" element={<MainLayout/>}>
           <Route path="/" element={<Home/>}/>
           <Route path="/home" element={<Home/>}/>
+          <Route path="/notifications" element={<Notifications/>}/>
           <Route path="/forum" element={<Forum/>}/>
             <Route path="/profile" element={<Profile/>}>
                 <Route path="" element={<History/>}/>
