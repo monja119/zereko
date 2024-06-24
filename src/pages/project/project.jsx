@@ -8,7 +8,7 @@ import { listProject, deleteProject } from "../../services/projectServices.js";
 import { useSelector } from "react-redux";
 import Nothing from "../../components/Nothing.jsx";
 
-import { FaPlus, FaEye, FaEdit, FaTrash} from "react-icons/fa";
+import { FaPlus, FaEye, FaEdit, FaTrash, FaUser} from "react-icons/fa";
 
 
 export default function Project() {
@@ -95,17 +95,22 @@ export default function Project() {
                                                             {project.title}
                                                         </Link>
                                                         <br/>
+                                                        <p className={"text-gray-200"}>
+                                                            {project.description}
+                                                        </p>
+                                                        <br/>
                                                         <small>
                                                             {project.created_date}
                                                         </small>
                                                     </td>
                                                     <td>
-                                                        <ul className="list-inline" style={{display: 'flex'}}>
-                                                            <li className="list-inline-item">
-                                                                <img alt="Avatar" style={{width: '30px'}}
-                                                                     className={"rounded-full"} src={person}
-                                                                     data-toggle="tooltip"
-                                                                     title="Nom de la personne 1"/>
+                                                        <ul className="list-inline flex flex-row justify-center items-center " style={{display: 'flex'}}>
+                                                            <li className="list-inline-item items-center">
+                                                                <FaUser alt="Avatar" title="Nom de la personne 2"  data-toggle="tooltip" className="fa-2x h-10 border-red border-secondary border w-10 mr-2 rounded-full"/>
+                                                            </li><li className="list-inline-item items-center">
+                                                                <FaUser alt="Avatar" title="Nom de la personne 2"  data-toggle="tooltip" className="fa-2x h-10 border-red border-secondary border w-10 mr-2 rounded-full"/>
+                                                            </li><li className="list-inline-item items-center">
+                                                                <FaUser alt="Avatar" title="Nom de la personne 2"  data-toggle="tooltip" className="fa-2x h-10 border-red border-secondary border w-10 mr-2 rounded-full"/>
                                                             </li>
                                                             <li className="list-inline-item">
                                                                 <img alt="Avatar" style={{width: '30px'}}
@@ -148,7 +153,7 @@ export default function Project() {
                                                             <FaEye className="mr-2"/>
                                                             Voir
                                                         </Link>
-                                                        <Link className="btn btn-info btn-sm m-2" to="/projects/edit">
+                                                        <Link className="btn btn-info btn-sm m-2" to={`/projects/edit/${project.id}`}>
                                                             <FaEdit className="mr-2"/>
                                                              Modifier
                                                         </Link>

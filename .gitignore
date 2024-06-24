@@ -1,4 +1,5 @@
-api/config/db.js
+
+/api/config/db.js
 # Logs
 logs
 *.log
