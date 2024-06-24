@@ -4,11 +4,11 @@ import React, { useEffect, useState} from 'react'
 import { NavLink, Outlet} from 'react-router-dom'
 
 // icons
-import { BsTelephone } from "react-icons/bs"
+// import { BsTelephone } from "react-icons/bs"
 import { CiMail } from "react-icons/ci"
 import { GiMale } from "react-icons/gi"
-import { FaBriefcase } from "react-icons/fa"
-import { AiFillMessage } from "react-icons/ai"
+// import { FaBriefcase } from "react-icons/fa"
+// import { AiFillMessage } from "react-icons/ai"
 import { MdLocationOn } from "react-icons/md"
 
 import {useSelector} from "react-redux";

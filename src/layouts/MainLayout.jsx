@@ -16,11 +16,11 @@ export const SidebarExpandContext = createContext()
 
 const MainLayout = () => {
     const navigate = useNavigate();
-    const user = useSelector(state => state.user.user)
+    const user = useSelector(state => state.user)
     const [expanded, setExpanded] = useState(false)
 
     useEffect(() => {
-        if(user == null) {
+        if(!user.isLoggedIn) {
             navigate('/login')
         }
         console.log(user)

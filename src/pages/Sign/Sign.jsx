@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from "react"
 import "./Sign.scss"
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { setUser } from "../../reducers/userReducer.js"
-
+import { useNavigate } from "react-router-dom"
 // components
 import Loader from "../../components/Loader"
 import { createUser } from "../../services/userService.js";
@@ -14,6 +14,8 @@ import Lottie from 'react-lottie'
 import animationData from '../../lotties/Banner.json'
 
 const Sign = () => {
+  const user = useSelector(state => state.user)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const [error, setError] = useState(null)
@@ -196,7 +198,16 @@ const Sign = () => {
       })
     }
   }, []) 
-  
+
+
+  // verification si l'utilisateur est connecté
+  useEffect(() => {
+    if(user.isLoggedIn) {
+      navigate('/home')
+    }
+    console.log(user)
+  }, []);
+
   return (
     <div className="sign">
       <main>
