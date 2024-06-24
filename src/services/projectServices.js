@@ -20,3 +20,4 @@ export const updateProject = async (project) => {
 export const deleteProject = async (id) => {
     return axios.delete(`${back_en_point}/projects/${id}`)
 }
+

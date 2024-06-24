@@ -11,7 +11,7 @@ router.route('/')
     .post((req,res)=>{
         const { email, password } = req.body;
 
-        db.query("SELECT * FROM users WHERE email = ?", [email], (err, row) => {
+        db.query("SELECT id, name, email, password FROM users WHERE email = ?", [email], (err, row) => {
             if (err) {
                 console.error(err);
                 return res.status(500).send(err.message);
@@ -21,12 +21,12 @@ router.route('/')
             }
 
             if (row[0].password!== password.toString()) {
-                console.log('tsy mitovy')
                 return res.status(401).send("Mot de passe incorrect");
             }
 
+            delete row[0].password;
             const data = {
-                user : row[0].password,
+                user : row[0],
             };
 
             res.status(200).send(data);
