@@ -60,7 +60,7 @@ export default function Project() {
     return (
         <>
         {
-            projects.length !== 0  ? (
+            projects.length === 0  ? (
                 <div className={"w-full h-full flex flex-col justify-center items-center"}>
                     <Nothing />
                     <Link to={"/projects/add"}
