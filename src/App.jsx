@@ -5,20 +5,25 @@ import {Routes, Route} from 'react-router-dom'
 // Global Styling
 import './App.css'
 
-// pages
+// auth
 import Sign from "./pages/Sign/Sign"
-import Home from "./pages/Home/Home.jsx"
+import LogOut from "./pages/settings/logOut";
+
+// home
+import Forum from "./pages/Forum"
+import Home from "./pages/home/Home.jsx"
 
 // profile
-import Forum from "./pages/Forum"
 import Profile from "./pages/profile/Profile"
 import History from "./pages/profile/History";
 import Feedback  from "./pages/profile/Feedback";
 import NotFound from "./pages/errors/NotFound";
-import LogOut from "./pages/settings/logOut";
 import Agenda from "./pages/profile/Agenda";
 import Project from './pages/project/project.jsx';
 import ProjectAdd from './pages/project/projectAdd.jsx';
+
+// notifications
+import Notifications from "./pages/notifications/Notifications.jsx";
 
 // Layout
 import MainLayout from "./layouts/MainLayout"
@@ -31,12 +36,18 @@ function App() {
         <Route path="/login" element={<Sign/>}/>
         <Route path="/logout" element={<LogOut/>}/>
         <Route path="/" element={<MainLayout/>}>
+<<<<<<< HEAD
           <Route path="/" element={<Project/>}/>
           <Route path="/home" element={<Project/>}/>
           <Route path="/projects" element={<Project/>}/>        
           <Route path="/projects/add" element={<ProjectAdd/>}/>
 
             
+=======
+          <Route path="/" element={<Home/>}/>
+          <Route path="/home" element={<Home/>}/>
+          <Route path="/notifications" element={<Notifications/>}/>
+>>>>>>> ccad21813728e15865a5f4e5b31947dc1ad8e6c2
           <Route path="/forum" element={<Forum/>}/>
           <Route path="/profile" element={<Profile/>}>
               <Route path="" element={<History/>}/>

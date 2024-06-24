@@ -82,7 +82,8 @@ const Sign = () => {
 
     })
     .catch(async (err) => {
-        setError("Erreur lors de la connexion - " + err.message)
+        const error  = await err
+        setError("Email ou mot de passe incorrect")
       stopLoading()
     })
   }
