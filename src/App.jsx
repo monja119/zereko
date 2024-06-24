@@ -36,18 +36,11 @@ function App() {
         <Route path="/login" element={<Sign/>}/>
         <Route path="/logout" element={<LogOut/>}/>
         <Route path="/" element={<MainLayout/>}>
-<<<<<<< HEAD
           <Route path="/" element={<Project/>}/>
           <Route path="/home" element={<Project/>}/>
           <Route path="/projects" element={<Project/>}/>        
           <Route path="/projects/add" element={<ProjectAdd/>}/>
-
-            
-=======
-          <Route path="/" element={<Home/>}/>
-          <Route path="/home" element={<Home/>}/>
           <Route path="/notifications" element={<Notifications/>}/>
->>>>>>> ccad21813728e15865a5f4e5b31947dc1ad8e6c2
           <Route path="/forum" element={<Forum/>}/>
           <Route path="/profile" element={<Profile/>}>
               <Route path="" element={<History/>}/>
